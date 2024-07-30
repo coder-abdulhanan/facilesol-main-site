@@ -56,7 +56,7 @@ Route::post('/admin/login', [AdminLoginController::class, 'onLogin']);
 Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin']);
 
 
-Route::get('/admin', [AdminHomeController::class, 'index']);
+Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home');
 
 
 //Admin Management
@@ -97,7 +97,7 @@ Route::delete('/admin/project-delete/{id}', [AdminProjectsController::class, 'de
 // Blog Management
 Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('blogs.show');
 Route::get('/admin/blog-add', [AdminBlogController::class, 'addBlog'])->name('blog.add');
-// Route::post('/admin/project-add', [AdminProjectsController::class, 'submitProjectRecord']);
+Route::post('/admin/project-add', [AdminBlogController::class, 'submitRecord'])->name('blog.sumbit');
 // Route::get('/admin/project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('project.edit');
 // Route::put('/admin/project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('project.update');
-// Route::delete('/admin/project-delete/{id}', [AdminProjectsController::class, 'deleteProject'])->name('project.delete');
+Route::delete('/admin/blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('blog.delete');
