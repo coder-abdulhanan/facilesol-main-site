@@ -28,7 +28,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-white mb-1">
                                             Projects</div>
-                                        <div class="h5 mb-0 font-weight-bold text-white">2</div>
+                                        <div class="h5 mb-0 font-weight-bold text-white">{{ $TotalProjects }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -48,7 +48,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-white">
-                                                    3
+                                                    NIY
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                         <div class="text-xs font-weight-bold text-white mb-1">
                                             Contacts</div>
                                         <div class="h5 mb-0 font-weight-bold text-white">
-                                            6
+                                            NIY
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -123,7 +123,7 @@
                                         <div class="text-xs font-weight-bold text-white mb-1">
                                             Company Stack</div>
                                         <div class="h5 mb-0 font-weight-bold text-white">
-                                            7
+                                            NIY
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -143,7 +143,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
                                                 <div class="h5 mb-0 mr-3 font-weight-bold text-black">
-                                                    8
+                                                    NIY
                                                 </div>
                                             </div>
                                         </div>

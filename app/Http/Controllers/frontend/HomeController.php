@@ -10,6 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.index', ['faqs'=>FAQsModel::get()]);
+        $faqs = FAQsModel::take(3)->get();
+        // $faqs = FAQsModel::latest()->take(3)->get();
+        return view('frontend.index', ['faqs'=>$faqs]);
     }
 }

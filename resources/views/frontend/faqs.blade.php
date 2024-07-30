@@ -27,86 +27,25 @@
 			</div>
 		</div>
 		<div class="row mt-60">
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<div class="accordion faq-wrap faq-wrap-page" id="accordionExample">
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingOne">
-							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								Q. Are we too small for managed IT services?
+					@foreach ($faqs as $faq)
+                    <div class="accordion-item">
+						<h2 class="accordion-header" id="heading{{$faq->id}}">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}">
+								Q. {{$faq->question}}
 							</button>
 						</h2>
-						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						<div id="collapse{{$faq->id}}" class="accordion-collapse collapse {{ $faq->id == 1 ? 'show' : '' }}" aria-labelledby="heading{{$faq->id}}" data-bs-parent="#accordionExample">
 							<div class="accordion-body">
-								Our IT support services, customers can be assisted from multiple channels & it gives end-users more for they can reach a business.
+								{{$faq->answer}}
 							</div>
 						</div>
 					</div>
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingTwo">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								Q. Are you focusing on cyber security?
-							</button>
-						</h2>
-						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-							<div class="accordion-body">
-								Our IT support services, customers can be assisted from multiple channels & it gives end-users more for they can reach a business.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingThree">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Q. Are IT services benefiting my business?
-							</button>
-						</h2>
-						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-							<div class="accordion-body">
-								Our IT support services, customers can be assisted from multiple channels & it gives end-users more for they can reach a business.
-							</div>
-						</div>
-					</div>
+                    @endforeach
 				</div>
 			</div>
-			<div class="col-lg-6 mobt-24">
-				<div class="accordion faq-wrap faq-wrap-page" id="accordionExample-two">
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingFour">
-						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-							Q. How can we help your provide IT service?
-						  </button>
-						</h2>
-						<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample-two">
-						  <div class="accordion-body">
-							  Our IT support services, customers can be assisted from multiple channels & it gives end-users more for they can reach a business.
-						  </div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingFive">
-						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-							Q. How is our work process simplified?
-						  </button>
-						</h2>
-						<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample-two">
-						  <div class="accordion-body">
-							  Our IT support services, customers can be assisted from multiple channels & it gives end-users more for they can reach a business.
-						  </div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="headingSix">
-						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-							Q. How does our IT support policy work?
-						  </button>
-						</h2>
-						<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample-two">
-						  <div class="accordion-body">
-							  Our IT support services, customers can be assisted from multiple channels & it gives end-users more for they can reach a business.
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </div>

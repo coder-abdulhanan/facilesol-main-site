@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\backend\Admins;
 use App\Models\backend\FAQs;
+use App\Models\backend\Projects;
 use App\Models\backend\Team;
 
 class AdminHomeController extends Controller
@@ -15,10 +16,11 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        $TotalAdmins = Admins::count();
-        $TotalTeam = Team::count();
-        $TotalFAQs = FAQs::count();
-        return view('backend.index', compact('TotalAdmins', 'TotalTeam', 'TotalFAQs'));
+        $TotalAdmins = Admins::count(); //2
+        $TotalTeam = Team::count();  // 1
+        $TotalFAQs = FAQs::count(); // 6
+        $TotalProjects = Projects::count(); // 1
+        return view('backend.index', compact('TotalAdmins', 'TotalTeam', 'TotalFAQs', 'TotalProjects'));
     }
 
 

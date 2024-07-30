@@ -58,6 +58,19 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item {{ Request::is('admin/blogs', 'admin/blog-add') ? 'active' : ''}}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
+                    aria-expanded="true" aria-controls="collapseBlogs">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Blog Management</span>
+                </a>
+                <div id="collapseBlogs" class="collapse" aria-labelledby="blogs" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/admin/blogs')}}">Blog Posts</a>
+                        <a class="collapse-item" href="{{url('/admin/blog-add')}}">Add Blog Post</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item {{ Request::is('admin/projects', 'admin/project-add') ? 'active':''}}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjects"
                     aria-expanded="true" aria-controls="collapseProjects">

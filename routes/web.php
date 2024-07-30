@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\backend\AdminFaqsController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Controllers
@@ -18,7 +17,8 @@ use App\Http\Controllers\backend\AdminLoginController;
 use App\Http\Controllers\backend\AdminHomeController;
 use App\Http\Controllers\backend\AdminProjectsController;
 use App\Http\Controllers\backend\TeamMemberController;
-
+use App\Http\Controllers\backend\AdminBlogController;
+use App\Http\Controllers\backend\AdminFaqsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,9 +87,17 @@ Route::put('/admin/faq-edit/{id}', [AdminFaqsController::class, 'updateFAQ'])->n
 Route::delete('/admin/faq-delete/{id}', [AdminFaqsController::class, 'deleteFAQ'])->name('faq.delete');
 
 // Project Management
-Route::get('/admin/projects', [AdminProjectsController::class, 'index'])->name('project.add');
+Route::get('/admin/projects', [AdminProjectsController::class, 'index'])->name('projects.show');
 Route::get('/admin/project-add', [AdminProjectsController::class, 'addProject'])->name('project.add');
 Route::post('/admin/project-add', [AdminProjectsController::class, 'submitProjectRecord']);
 Route::get('/admin/project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('project.edit');
 Route::put('/admin/project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('project.update');
 Route::delete('/admin/project-delete/{id}', [AdminProjectsController::class, 'deleteProject'])->name('project.delete');
+
+// Blog Management
+Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('blogs.show');
+Route::get('/admin/blog-add', [AdminBlogController::class, 'addBlog'])->name('blog.add');
+// Route::post('/admin/project-add', [AdminProjectsController::class, 'submitProjectRecord']);
+// Route::get('/admin/project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('project.edit');
+// Route::put('/admin/project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('project.update');
+// Route::delete('/admin/project-delete/{id}', [AdminProjectsController::class, 'deleteProject'])->name('project.delete');

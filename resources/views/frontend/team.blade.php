@@ -14,8 +14,6 @@
         </div>
     </div>
 </div>
-<!-- Breadcrumb End -->
-<!-- Team -->
 <div class="team-area pb-120 pt-120">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -44,9 +42,7 @@
 				</div>
 			</div>
 			@endforeach
-
 		</div>
 	</div>
 </div>
-<!-- Team End -->
 @endsection
