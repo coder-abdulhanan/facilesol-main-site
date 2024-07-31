@@ -41,11 +41,11 @@
                                     </td>
                                     <td>
                                         <a href="#">
-                                            <a href="{route('admin.update', ['id'=> $value->id])}}" class="btn btn-success btn-circle btn-sm">
+                                            <a href="{{ route('admin.edit', ['id'=> $value->id])}}" class="btn btn-success btn-circle btn-sm">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </a>
-                                        <a href="{{route('admin.delete', ['id'=> $value->id])}}" class="btn btn-danger btn-circle btn-sm" onClick="return confirm('Are you sure you want to Delete Record')"; title="Delete Record">
+                                        <a href="{{ route('admin.delete', ['id'=> $value->id])}}" class="btn btn-danger btn-circle btn-sm" onClick="return confirm('Are you sure you want to Delete Record')"; title="Delete Record">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>

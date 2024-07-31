@@ -8,6 +8,7 @@ use App\Models\backend\Admins;
 use App\Models\backend\FAQs;
 use App\Models\backend\Projects;
 use App\Models\backend\Team;
+use Illuminate\Support\Facades\Hash;
 
 class AdminHomeController extends Controller
 {
@@ -26,9 +27,11 @@ class AdminHomeController extends Controller
 
     public function registerAdmin()
     {
-        $url = url('/admin/register');
-        $data = compact('url');
-        return view('backend.admin-add')->with($data);
+        // $url = route('admin.create');
+        // $data = compact('url');
+        // return view('backend.admin-add')->with($data);
+
+        return view('backend.admin-add');
     }
 
 
@@ -50,10 +53,12 @@ class AdminHomeController extends Controller
         $admin->email = $request['email'];
         $admin->contact = $request['contact'];
         $admin->password = $request['password'];
+        $admin->password = Hash::make($request['password']);
         // $admin->password = md5($request['password']);
         $admin->status = 1;
         $admin->save();
-        return redirect('/admin/admins-list');
+        // return redirect('/admin/admins-list');
+        return redirect()->route('admin.show');
     }
 
 
@@ -65,18 +70,16 @@ class AdminHomeController extends Controller
         // Calling the helper function for testing data
         // testData($admins);
 
-    //     echo "<pre>";
-    //     print_r($admins->toArray()); //toArry runs only when we have some data in DB
-    //    echo  "</pre>";
-    //     die;
+        //     echo "<pre>";
+        //     print_r($admins->toArray()); //toArry runs only when we have some data in DB
+        //    echo  "</pre>";
+        //     die;
+
         $data = compact('admins');
         return view('backend/admins-list')->with($data);
 
     }
 
-        /**
-     * Remove the specified resource from storage.
-     */
     public function deleteAdminRecord(string $id)
     {
         $data  = Admins::find($id);
@@ -85,21 +88,40 @@ class AdminHomeController extends Controller
         }
         $data = compact('admins');
         return view('backend/admins-list')->with($data);
-
-
     }
 
     public function editAdminRecord($id)
     {
+        // dd($id);
+        $data = Admins::where('id', $id)->first();
+        return view('backend.admin-edit', ['admin' => $data]);
 
-        $data  = Admins::find($id);
-        if(is_null($data)){
-            return view('backend.admins-list');
-        } else {
-            $url = url('/admin/update') . "/" . $id;
-            $data = compact('admins', 'url');
-            return view('backend.admin-add')->with($data);
-        }
+        // $data  = Admins::find($id);
+        // if(is_null($data)){
+        //     return view('backend.admins-list');
+        // } else {
+        //     $url = url('/admin/update') . "/" . $id;
+        //     $data = compact('admins', 'url');
+        //     return view('backend.admin-add')->with($data);
+        // }
+
+    }
+
+    public function updateAdminRecord(Request $request, $id){
+        $request->validate(
+            [
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'contact' => 'required'
+            ]
+            );
+
+        $admin = Admins::where('id', $id)->first();
+        $admin->first_name = $request->first_name;
+        $admin->last_name = $request->last_name;
+        $admin->contact = $request->contact;
+        $admin->save();
+        return back()->withSuccess('Member Record Updated Successfully');
 
     }
 

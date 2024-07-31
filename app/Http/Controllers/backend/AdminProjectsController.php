@@ -102,11 +102,4 @@ class AdminProjectsController extends Controller
         return back()->withSuccess('Member Record Deleted Successfully');
     }
 
-    // public function showTeamMember($id)
-    // {
-    //     $team = Projects::where('id', $id)->first();
-    //     return view('backend.team-member-details', ['team' => $team]);
-    // }
-
-
 }

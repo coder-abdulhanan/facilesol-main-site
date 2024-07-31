@@ -21,6 +21,7 @@
     <link href="{{ url('backend/css/admin.min.css') }}" rel="stylesheet">
     <script src="{{ url('backend/vendor/sweetalert/sweetalert.min.js') }}"></script>
     <link href="{{ url('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 </head>
 <body id="page-top">
     <div id="wrapper">

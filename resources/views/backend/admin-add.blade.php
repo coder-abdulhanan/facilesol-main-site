@@ -3,9 +3,9 @@
 @section('main-container')
             <div class="container-fluid"><br>
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3"><a href="{{url('/admin/admins-list')}}" class="btn btn-primary">Admins</a></div>
+                    <div class="card-header py-3"><a href="{{ route('admin.show')}}" class="btn btn-primary">Admins</a></div>
                     <div class="card-body">
-                        <form method="post" action="{{$url}}">
+                        <form method="post" action="{{ route('admin.register')}}">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-6">

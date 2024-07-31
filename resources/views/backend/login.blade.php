@@ -52,7 +52,7 @@
                                         <p>{{ session()->get('error'); }}</p>
                                     </div>
                                 @endif
-                                <form class="user" method="post" action="{{ url('/admin/login') }}">
+                                <form class="user" method="post" action="{{ route('submit') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="email">Email Address</label>

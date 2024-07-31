@@ -50,54 +50,80 @@ Route::post('/contact', [ContactController::class, 'submitMessage']);
 // });
 
 // Backend
-//Login Page
-Route::get('/admin/login', [AdminLoginController::class, 'index']);
-Route::post('/admin/login', [AdminLoginController::class, 'onLogin']);
-Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin']);
-
 
 Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home');
 
+//Admin Module
+Route::group(['as' => 'admin.', 'prefix' => '/admin/'], function(){
+    // Login
+    Route::get('login', [AdminLoginController::class, 'index'])->name('login');
+    Route::post('login', [AdminLoginController::class, 'onLogin'])->name('submit');
+    Route::get('logout', [AdminLoginController::class, 'logoutAdmin'])->name('logout');
+    // Registration
+    Route::get('register', [AdminHomeController::class, 'registerAdmin'])->name('add');
+    Route::post('register', [AdminHomeController::class, 'submitAdminRecord'])->name('register');
+    // Admin Management
+    Route::get('admins-list', [AdminHomeController::class, 'showAdminRecord'])->name('show');
+    Route::get('delete/{id}', [AdminHomeController::class, 'deleteAdminRecord'])->name('delete');
+    Route::get('edit/{id}', [AdminHomeController::class, 'editAdminRecord'])->name('edit');
+    Route::put('update/{id}', [AdminHomeController::class, 'updateAdminRecord'])->name('update');
 
-//Admin Management
-Route::get('/admin/register', [AdminHomeController::class, 'registerAdmin'])->name('admin.create');
-Route::post('/admin/register', [AdminHomeController::class, 'submitAdminRecord']);
-Route::get('/admin/admins-list', [AdminHomeController::class, 'showAdminRecord'])->name('admin.show');
-Route::get('/admin/delete/{id}', [AdminHomeController::class, 'deleteAdminRecord'])->name('admin.delete');
-Route::get('/admin/edit/{id}', [AdminHomeController::class, 'editAdminRecord'])->name('admin.edit');
-Route::get('/admin/update/{id}', [AdminHomeController::class, 'updateAdminRecord'])->name('admin.update');
+});
 
+// Team Module
+Route::group(['as' => 'team.', 'prefix' => '/admin/'], function(){
+    Route::get('team', [TeamMemberController::class, 'index'])->name('show');
+    Route::get('team-member-details/{id}', [TeamMemberController::class, 'showTeamMember'])->name('details');
+    Route::get('team-add', [TeamMemberController::class, 'registerTeam'])->name('add');
+    Route::post('team-add', [TeamMemberController::class, 'submitTeamRecord']);
+    Route::get('team-edit/{id}', [TeamMemberController::class, 'editTeam'])->name('edit');
+    Route::put('team-edit/{id}', [TeamMemberController::class, 'updateTeam'])->name('update');
+    Route::delete('team-delete/{id}', [TeamMemberController::class, 'deleteTeam'])->name('delete');
+});
 
-// Team Management
-Route::get('/admin/team', [TeamMemberController::class, 'index'])->name('team.show');
-Route::get('/admin/team-member-details/{id}', [TeamMemberController::class, 'showTeamMember'])->name('team.details');
-Route::get('/admin/team-add', [TeamMemberController::class, 'registerTeam'])->name('team.add');
-Route::post('/admin/team-add', [TeamMemberController::class, 'submitTeamRecord']);
-Route::get('/admin/team-edit/{id}', [TeamMemberController::class, 'editTeam'])->name('team.edit');
-Route::put('/admin/team-edit/{id}', [TeamMemberController::class, 'updateTeam'])->name('team.update');
-// Route::get('/admin/team-delete/{id}', [TeamMemberController::class, 'deleteTeam'])->name('team.delete');
-Route::delete('/admin/team-delete/{id}', [TeamMemberController::class, 'deleteTeam'])->name('team.delete');
+// FAQs Module
+Route::group(['as' => 'faq.', 'prefix' => '/admin/'], function(){
+    Route::get('faqs', [AdminFaqsController::class, 'index'])->name('show');
+    Route::get('faq-add', [AdminFaqsController::class, 'addFAQ'])->name('add');
+    Route::post('faq-add', [AdminFaqsController::class, 'submitFaqRecord'])->name('submit');
+    Route::get('faq-edit/{id}', [AdminFaqsController::class, 'editFAQ'])->name('edit');
+    Route::put('faq-edit/{id}', [AdminFaqsController::class, 'updateFAQ'])->name('update');
+    Route::delete('faq-delete/{id}', [AdminFaqsController::class, 'deleteFAQ'])->name('delete');
+});
 
-// FAQs Management
-Route::get('/admin/faqs', [AdminFaqsController::class, 'index'])->name('faq.show');
-Route::get('/admin/faq-add', [AdminFaqsController::class, 'addFAQ'])->name('faq.add');
-Route::post('/admin/faq-add', [AdminFaqsController::class, 'submitFaqRecord']);
-Route::get('/admin/faq-edit/{id}', [AdminFaqsController::class, 'editFAQ'])->name('faq.edit');
-Route::put('/admin/faq-edit/{id}', [AdminFaqsController::class, 'updateFAQ'])->name('faq.update');
-Route::delete('/admin/faq-delete/{id}', [AdminFaqsController::class, 'deleteFAQ'])->name('faq.delete');
+// Project Module
+Route::group(['as' => 'project.', 'prefix' => '/admin/'], function(){
+    Route::get('projects', [AdminProjectsController::class, 'index'])->name('show');
+    Route::get('project-add', [AdminProjectsController::class, 'addProject'])->name('add');
+    Route::post('project-add', [AdminProjectsController::class, 'submitProjectRecord']);
+    Route::get('project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('edit');
+    Route::put('project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('update');
+    Route::delete('project-delete/{id}', [AdminProjectsController::class, 'deleteProject'])->name('delete');
+});
 
-// Project Management
-Route::get('/admin/projects', [AdminProjectsController::class, 'index'])->name('projects.show');
-Route::get('/admin/project-add', [AdminProjectsController::class, 'addProject'])->name('project.add');
-Route::post('/admin/project-add', [AdminProjectsController::class, 'submitProjectRecord']);
-Route::get('/admin/project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('project.edit');
-Route::put('/admin/project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('project.update');
-Route::delete('/admin/project-delete/{id}', [AdminProjectsController::class, 'deleteProject'])->name('project.delete');
+// Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('blogs.show');
+// Route::get('/admin/blog-add', [AdminBlogController::class, 'addBlog'])->name('blog.add');
+// Route::post('/admin/project-add', [AdminBlogController::class, 'submitRecord'])->name('blog.sumbit');
 
-// Blog Management
-Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('blogs.show');
-Route::get('/admin/blog-add', [AdminBlogController::class, 'addBlog'])->name('blog.add');
-Route::post('/admin/project-add', [AdminBlogController::class, 'submitRecord'])->name('blog.sumbit');
 // Route::get('/admin/project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('project.edit');
 // Route::put('/admin/project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('project.update');
-Route::delete('/admin/blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('blog.delete');
+
+
+// Route::delete('/admin/blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('blog.delete');
+
+// Blog Module
+Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
+    Route::get('blogs', [AdminBlogController::class, 'index'])->name('show');
+    Route::get('blog-add', [AdminBlogController::class, 'addBlog'])->name('add');
+    Route::post('blog-add', [AdminBlogController::class, 'submitRecord'])->name('sumbit');
+    Route::delete('blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('delete');
+});
+
+
+// Route::group([], function(){
+    //Routes Grouping with Closure Function
+// })
+
+
+// php artisan route:list
+//Route as
