@@ -113,7 +113,7 @@
             </li>
             <hr class="sidebar-divider d-none d-md-block">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin/logout')}}">
+                <a class="nav-link" href="{{ route('admin.logout') }}">
                     <i class="fas fa-power-off"></i>
                     <span>Logout</span></a>
             </li>

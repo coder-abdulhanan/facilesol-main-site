@@ -64,3 +64,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## INNER JOIN in SQL
+
+SELECT products.name AS 'Product Name', products.details AS 'Product Details', products.price AS 'Product Price', categories.title AS 'Category Name' FROM products INNER JOIN categories ON products.id = categories.id;
