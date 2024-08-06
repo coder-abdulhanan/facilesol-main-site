@@ -63,13 +63,13 @@ This project involves building a fully functional business web application using
 - Composer
 - Laravel 11.x
 - MySQL  database
-- Tailwind/Bootstrap for Frontend
+- Frontend Development using any framework
 
 ### Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-repo/your-project.git
+   git clone https://github.com/Jamil226/facilesol-main-site.git
 
 
 ## INNER JOIN in SQL
