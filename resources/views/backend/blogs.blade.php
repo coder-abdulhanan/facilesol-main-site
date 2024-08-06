@@ -50,10 +50,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="#">
-                                            <a href="/admin/blog-edit/{{ $blog->id }}" class="btn btn-success btn-circle btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                        <a href="/admin/blog-edit/{{ $blog->id }}" class="btn btn-success btn-circle btn-sm">
+                                            <i class="fas fa-edit"></i>
                                         </a>
                                         <form method="post" class="d-inline" action="/admin/blog-delete/{{ $blog->id }}">
                                             @csrf

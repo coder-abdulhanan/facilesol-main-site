@@ -64,9 +64,9 @@ Route::group(['as' => 'admin.', 'prefix' => '/admin/'], function(){
     Route::post('register', [AdminHomeController::class, 'submitAdminRecord'])->name('register');
     // Admin Management
     Route::get('admins-list', [AdminHomeController::class, 'showAdminRecord'])->name('show');
-    Route::get('delete/{id}', [AdminHomeController::class, 'deleteAdminRecord'])->name('delete');
     Route::get('edit/{id}', [AdminHomeController::class, 'editAdminRecord'])->name('edit');
     Route::put('update/{id}', [AdminHomeController::class, 'updateAdminRecord'])->name('update');
+    Route::delete('admin-delete/{id}', [AdminHomeController::class, 'deleteAdminRecord'])->name('delete');
 
 });
 
@@ -116,8 +116,16 @@ Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
     Route::get('blogs', [AdminBlogController::class, 'index'])->name('show');
     Route::get('blog-add', [AdminBlogController::class, 'addBlog'])->name('add');
     Route::post('blog-add', [AdminBlogController::class, 'submitRecord'])->name('sumbit');
+    Route::get('blog-edit/{id}', [AdminBlogController::class, 'editRecord'])->name('edit');
+    Route::put('blog-edit/{id}', [AdminBlogController::class, 'updateRecord'])->name('update');
     Route::delete('blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('delete');
 });
+
+
+
+
+
+
 
 
 // Route::group([], function(){
@@ -127,3 +135,5 @@ Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
 
 // php artisan route:list
 //Route as
+
+

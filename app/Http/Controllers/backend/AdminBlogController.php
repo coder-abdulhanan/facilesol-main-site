@@ -53,6 +53,52 @@ class AdminBlogController extends Controller
         return back()->withSuccess('Blog Record Added Successfully');
     }
 
+    public function editRecord($id)
+    {
+        // dd($id);
+        $blog = Blogs::where('id', $id)->first();
+
+        return view('backend.blog-edit', ['blog' => $blog]);
+
+    }
+
+    public function updateRecord(Request $request, $id)
+    {
+
+        $request->validate(
+            [
+
+                'title' => 'required|min:3',
+                'details' => 'required|min:10',
+                'author' => 'required|min:3',
+                'date' => 'required',
+                'author_image' => 'nullable|mimes:jpeg,jpg,png|max:10000',
+                'blog_image' => 'nullable|mimes:jpeg,jpg,png|max:10000'
+            ]
+            );
+
+        $blog = Blogs::where('id', $id)->first();
+
+        if(isset($request->author_image))
+        {
+            $AuthorImageName = 'fs_blog_author_' . time() . '.' . $request->author_image->extension();
+            $request->author_image->move(public_path('backend/images/blog_authors'), $AuthorImageName);
+            $blog->author_image = $AuthorImageName;
+        }
+        if(isset($request->blog_image))
+        {
+            $BlogImageName = 'fs_blog_post_' . time() . '.' . $request->blog_image->extension();
+            $request->blog_image->move(public_path('backend/images/blog_posts'), $BlogImageName);
+            $blog->blog_image = $BlogImageName;
+        }
+        $blog->title = $request->title;
+        $blog->details = $request->details;
+        $blog->author = $request->author;
+        $blog->updated_on = $request->date;
+        $blog->save();
+        return back()->withSuccess('Blog Post Updated Successfully');
+    }
+
     public function deleteRecord($id)
     {
         $blog = Blogs::where('id', $id)->first();

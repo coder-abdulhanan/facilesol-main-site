@@ -48,13 +48,13 @@ class AdminHomeController extends Controller
             ]
             );
         $admin = new Admins();
-        $admin->first_name = $request['first_name'];
-        $admin->last_name = $request['last_name'];
-        $admin->email = $request['email'];
-        $admin->contact = $request['contact'];
-        $admin->password = $request['password'];
-        $admin->password = Hash::make($request['password']);
-        // $admin->password = md5($request['password']);
+        $admin->first_name = $request->first_name;
+        $admin->last_name = $request->last_name;
+        $admin->email = $request->email;
+        $admin->contact = $request->contact;
+        $admin->password = $request->password;
+        $admin->password = Hash::make($request->password);
+        // $admin->password = md5($request->password);
         $admin->status = 1;
         $admin->save();
         // return redirect('/admin/admins-list');
@@ -80,15 +80,15 @@ class AdminHomeController extends Controller
 
     }
 
-    public function deleteAdminRecord(string $id)
+    public function deleteAdminRecord($id)
     {
-        $data  = Admins::find($id);
-        if(!is_null($data)){
-            $data->delete();
-        }
-        $data = compact('admins');
-        return view('backend/admins-list')->with($data);
+
+        $admin = Admins::where('id', $id)->first();
+        $admin->delete();
+        return back()->withSuccess('Admin Deleted Successfully');
     }
+
+
 
     public function editAdminRecord($id)
     {
@@ -121,7 +121,7 @@ class AdminHomeController extends Controller
         $admin->last_name = $request->last_name;
         $admin->contact = $request->contact;
         $admin->save();
-        return back()->withSuccess('Member Record Updated Successfully');
+        return back()->withSuccess('Admin Record Updated Successfully');
 
     }
 
