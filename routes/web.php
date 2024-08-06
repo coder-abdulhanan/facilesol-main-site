@@ -101,16 +101,6 @@ Route::group(['as' => 'project.', 'prefix' => '/admin/'], function(){
     Route::delete('project-delete/{id}', [AdminProjectsController::class, 'deleteProject'])->name('delete');
 });
 
-// Route::get('/admin/blogs', [AdminBlogController::class, 'index'])->name('blogs.show');
-// Route::get('/admin/blog-add', [AdminBlogController::class, 'addBlog'])->name('blog.add');
-// Route::post('/admin/project-add', [AdminBlogController::class, 'submitRecord'])->name('blog.sumbit');
-
-// Route::get('/admin/project-edit/{id}', [AdminProjectsController::class, 'editProject'])->name('project.edit');
-// Route::put('/admin/project-edit/{id}', [AdminProjectsController::class, 'updateProject'])->name('project.update');
-
-
-// Route::delete('/admin/blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('blog.delete');
-
 // Blog Module
 Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
     Route::get('blogs', [AdminBlogController::class, 'index'])->name('show');
@@ -120,11 +110,6 @@ Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
     Route::put('blog-edit/{id}', [AdminBlogController::class, 'updateRecord'])->name('update');
     Route::delete('blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('delete');
 });
-
-
-
-
-
 
 
 

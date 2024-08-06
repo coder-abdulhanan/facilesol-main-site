@@ -10,5 +10,6 @@ class Admins extends Model
     use HasFactory;
     protected $table = "admins";
     protected $primary_key = "id";
+    public $timestamps = false;
 
 }

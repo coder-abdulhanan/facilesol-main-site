@@ -2,7 +2,7 @@
 ************************************************************************************************
                         Facile Solutions (UK)
                         Development Date : 14-11-2017
-                        Development Date   : 28-07-2022
+                        Page Updated On : 06-08-2024
 ************************************************************************************************
 -->
 <!DOCTYPE html>
@@ -137,21 +137,23 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    Welcome, <b>{{ $FullName }}</b>
+                                </span>
                                 <img class="img-profile rounded-circle" src="{{ url('backend/images/profile.svg')}}" alt="{{config('app.name')}}">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="admins.php">
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
+                                    Admin Profile
                                 </a>
-                                <a class="dropdown-item" href="admin-update-password.php">
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
                                     <i class="fas fa-fingerprint fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Change Password
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{url('/admin/logout')}}" data-toggle="modal"
+                                <a class="dropdown-item" href="{{route('admin.logout')}}" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout

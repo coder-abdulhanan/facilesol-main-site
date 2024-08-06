@@ -16,7 +16,6 @@ class AdminLoginController extends Controller
 
     public function onLogin(Request $request)
     {
-
         $admin = Admins::where('email', $request->input('email'))->where('password', $request->input('password'))->first();
         if($admin){
             session()->put('id', $admin->id);
@@ -26,6 +25,7 @@ class AdminLoginController extends Controller
             return redirect('/admin')->with('succes', 'Login Success');
 
         } else {
+            //dd($request);
             return redirect('admin/login')->with('error', 'Invalid Credentials.');
         }
 

@@ -10,114 +10,135 @@ class TeamMemberController extends Controller
 {
     public function index()
     {
-        return view('backend.team', ['team'=>Team::get()]);
+        if(session()->has('email')){
+            return view('backend.team', ['team'=>Team::get()]);
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
-
 
     public function registerTeam()
     {
-        return view('backend.team-add');
+        if(session()->has('email')){
+
+            return view('backend.team-add');
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
 
     public function submitTeamRecord(Request $request)
     {
         // dd($request->all());
-
-        $request->validate(
-            [
-                'fullname' => 'required|min:3',
-                'email' => 'required|email',
-                'designation' => 'required|min:3',
-                'shortintro' => 'required|min:10',
-                'longintro' => 'required|min:20',
-                'linkedin' => 'required|min:6',
-                'insta' => 'required|min:6',
-                'twitter' => 'required|min:6',
-                'facebook' => 'required|min:6',
-                'image' => 'required|mimes:jpeg,jpg,png|max:10000'
-            ]
-            );
-        $ADMIN_STATUS = 1;
-        $ImageName = 'fs_team_' . time() . '.' . $request->image->extension();
-        $request->image->move(public_path('backend/images/team'), $ImageName);
-        // dd($ImageName);
-        $team = new Team;
-        $team->fullname = $request->fullname;
-        $team->email = $request->email;
-        $team->designation = $request->designation;
-        $team->shortintro = $request->shortintro;
-        $team->longintro = $request->longintro;
-        $team->linkedin = $request->linkedin;
-        $team->insta = $request->insta;
-        $team->twitter = $request->twitter;
-        $team->facebook = $request->facebook;
-        $team->image = $ImageName;
-        $team->status = $ADMIN_STATUS;
-        $team->save();
-        return back()->withSuccess('Member Record Added Successfully');
+        if(session()->has('email')){
+            $request->validate(
+                [
+                    'fullname' => 'required|min:3',
+                    'email' => 'required|email',
+                    'designation' => 'required|min:3',
+                    'shortintro' => 'required|min:10',
+                    'longintro' => 'required|min:20',
+                    'linkedin' => 'required|min:6',
+                    'insta' => 'required|min:6',
+                    'twitter' => 'required|min:6',
+                    'facebook' => 'required|min:6',
+                    'image' => 'required|mimes:jpeg,jpg,png|max:10000'
+                ]
+                );
+            $ADMIN_STATUS = 1;
+            $ImageName = 'fs_team_' . time() . '.' . $request->image->extension();
+            $request->image->move(public_path('backend/images/team'), $ImageName);
+            // dd($ImageName);
+            $team = new Team;
+            $team->fullname = $request->fullname;
+            $team->email = $request->email;
+            $team->designation = $request->designation;
+            $team->shortintro = $request->shortintro;
+            $team->longintro = $request->longintro;
+            $team->linkedin = $request->linkedin;
+            $team->insta = $request->insta;
+            $team->twitter = $request->twitter;
+            $team->facebook = $request->facebook;
+            $team->image = $ImageName;
+            $team->status = $ADMIN_STATUS;
+            $team->save();
+            return back()->withSuccess('Member Record Added Successfully');
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
 
     public function editTeam($id)
     {
         // dd($id);
-        $team = Team::where('id', $id)->first();
+        if(session()->has('email')){
 
-        return view('backend.team-edit', ['team' => $team]);
-
+            $team = Team::where('id', $id)->first();
+            return view('backend.team-edit', ['team' => $team]);
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
 
     public function updateTeam(Request $request, $id)
     {
-
-        $request->validate(
-            [
-                'fullname' => 'required|min:3',
-                'email' => 'required|email',
-                'designation' => 'required|min:3',
-                'shortintro' => 'required|min:10',
-                'longintro' => 'required|min:20',
-                'linkedin' => 'required|min:6',
-                'insta' => 'required|min:6',
-                'twitter' => 'required|min:6',
-                'facebook' => 'required|min:6',
-                'image' => 'nullable|mimes:jpeg,jpg,png|max:10000'
-            ]
-            );
-
-        $team = Team::where('id', $id)->first();
-        $ADMIN_STATUS = 1;
-        if(isset($request->image))
-        {
-            $ImageName = 'fs_team_' . time() . '.' . $request->image->extension();
-            $request->image->move(public_path('backend/images/team'), $ImageName);
-            $team->image = $ImageName;
+        if(session()->has('email')){
+            $request->validate(
+                [
+                    'fullname' => 'required|min:3',
+                    'email' => 'required|email',
+                    'designation' => 'required|min:3',
+                    'shortintro' => 'required|min:10',
+                    'longintro' => 'required|min:20',
+                    'linkedin' => 'required|min:6',
+                    'insta' => 'required|min:6',
+                    'twitter' => 'required|min:6',
+                    'facebook' => 'required|min:6',
+                    'image' => 'nullable|mimes:jpeg,jpg,png|max:10000'
+                ]);
+            $team = Team::where('id', $id)->first();
+            $ADMIN_STATUS = 1;
+            if(isset($request->image))
+            {
+                $ImageName = 'fs_team_' . time() . '.' . $request->image->extension();
+                $request->image->move(public_path('backend/images/team'), $ImageName);
+                $team->image = $ImageName;
+            }
+            $team->fullname = $request->fullname;
+            $team->email = $request->email;
+            $team->designation = $request->designation;
+            $team->shortintro = $request->shortintro;
+            $team->longintro = $request->longintro;
+            $team->linkedin = $request->linkedin;
+            $team->insta = $request->insta;
+            $team->twitter = $request->twitter;
+            $team->facebook = $request->facebook;
+            $team->status = $ADMIN_STATUS;
+            $team->save();
+            return back()->withSuccess('Member Record Updated Successfully');
+        } else {
+            return redirect()->route('admin.login');
         }
-        $team->fullname = $request->fullname;
-        $team->email = $request->email;
-        $team->designation = $request->designation;
-        $team->shortintro = $request->shortintro;
-        $team->longintro = $request->longintro;
-        $team->linkedin = $request->linkedin;
-        $team->insta = $request->insta;
-        $team->twitter = $request->twitter;
-        $team->facebook = $request->facebook;
-        $team->status = $ADMIN_STATUS;
-        $team->save();
-        return back()->withSuccess('Member Record Updated Successfully');
     }
-
 
     public function deleteTeam($id)
     {
-        $team = Team::where('id', $id)->first();
-        $team->delete();
-        return back()->withSuccess('Member Record Deleted Successfully');
+        if(session()->has('email')){
+            $team = Team::where('id', $id)->first();
+            $team->delete();
+            return back()->withSuccess('Member Record Deleted Successfully');
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
 
     public function showTeamMember($id)
     {
-        $team = Team::where('id', $id)->first();
-        return view('backend.team-member-details', ['team' => $team]);
+        if(session()->has('email')){
+            $team = Team::where('id', $id)->first();
+            return view('backend.team-member-details', ['team' => $team]);
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
-
 }
