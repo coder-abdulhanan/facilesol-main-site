@@ -19,7 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Route::apiResource('posts' ,ApiBlogController:: class);
+
 Route::get('/posts' , [ApiBlogController::class, 'index']);
+Route::post('/posts/add-post' , [ApiBlogController::class, 'submitPost']);
 Route::get('/posts/{id}' , [ApiBlogController::class, 'showSinglePost']);
+Route::put('posts/post-edit/{id}', [ApiBlogController::class, 'updateRecord']);
+Route::delete('posts/post-delete/{id}', [ApiBlogController::class, 'deleteRecord'])->name('delete');
 
 
