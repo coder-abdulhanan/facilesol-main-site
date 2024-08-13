@@ -74,3 +74,10 @@ Route:: delete('posts/{post}',[PostController::class, 'destroy"]);
 
 
 Route::apiResource('posts' ,PostController:: class);
+
+
+//Seeding
+
+php artisan make:seeder
+php artisan db:seed --class=ServiceSeeder
+php artisan db:seed --class=ServicesCategorySeeder
