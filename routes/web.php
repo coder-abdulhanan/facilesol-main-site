@@ -51,7 +51,7 @@ Route::post('/contact', [ContactController::class, 'submitMessage']);
 
 // Backend
 
-Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home');
+Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home')->middleware('admin.check');
 
 //Admin Module
 Route::group(['as' => 'admin.', 'prefix' => '/admin/'], function(){
@@ -83,7 +83,7 @@ Route::group(['as' => 'team.', 'prefix' => '/admin/'], function(){
 
 // FAQs Module
 Route::group(['as' => 'faq.', 'prefix' => '/admin/'], function(){
-    Route::get('faqs', [AdminFaqsController::class, 'index'])->name('show');
+    Route::get('faqs', [AdminFaqsController::class, 'index'])->name('show')->middleware('mykey');
     Route::get('faq-add', [AdminFaqsController::class, 'addFAQ'])->name('add');
     Route::post('faq-add', [AdminFaqsController::class, 'submitFaqRecord'])->name('submit');
     Route::get('faq-edit/{id}', [AdminFaqsController::class, 'editFAQ'])->name('edit');

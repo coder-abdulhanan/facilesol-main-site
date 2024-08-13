@@ -76,8 +76,34 @@ Route:: delete('posts/{post}',[PostController::class, 'destroy"]);
 Route::apiResource('posts' ,PostController:: class);
 
 
-//Seeding
+## Seeding
 
 php artisan make:seeder
 php artisan db:seed --class=ServiceSeeder
 php artisan db:seed --class=ServicesCategorySeeder
+
+## Middleware
+
+Middleware provide a convenient mechanism for inspecting and
+filtering HTTP requests entering your application.
+
+Cleint Request -> <Middleware (Y/>N) -> Server Response (Web App)
+
+Filters the incoming request
+
+## Middleware - Global
+
+
+php artisan make:middleware MyAppMiddleware
+
+Register Middleware in Kernel.php (configuration file)
+
+Reset config using
+
+php artisan config:cache
+
+
+## Middleware - Route
+
+Only works on checked/selected routes
+

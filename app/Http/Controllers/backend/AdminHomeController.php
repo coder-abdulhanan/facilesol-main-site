@@ -21,16 +21,16 @@ class AdminHomeController extends Controller
         //     dd('No Session Exists');
         // }
 
-        if(session()->has('email')){
+        // if(session()->has('email')){
             $FullName = session('first_name') . " " . session('last_name');
             $TotalAdmins = Admins::count(); //2
             $TotalTeam = Team::count();  // 1
             $TotalFAQs = FAQs::count(); // 6
             $TotalProjects = Projects::count(); // 1
             return view('backend.index', compact('FullName','TotalAdmins', 'TotalTeam', 'TotalFAQs', 'TotalProjects'));
-        } else {
-            return redirect()->route('admin.login');
-        }
+        // } else {
+        //     return redirect()->route('admin.login');
+        // }
     }
 
     public function registerAdmin()
