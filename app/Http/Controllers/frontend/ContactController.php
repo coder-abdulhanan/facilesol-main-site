@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\frontend\ContactModel;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,19 +15,36 @@ class ContactController extends Controller
 
     public function submitMessage(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request -> all());
-        // echo "</pre>";
+        // dd($request);
 
         $request->validate(
             [
-                'name' => 'required',
+                'name' => 'required|min:3',
                 'email' => 'required|email',
-                'phone' => 'required',
+                'phone' => 'required|min:10',
                 'subject' => 'required',
-                'message' => 'required'
+                'message' => 'required|min:20'
             ]
-            );
+        );
 
+        // $FullName = $request->name;
+        // $Email = $request->email;
+        // $Phone = $request->phone;
+        // $Subject = $request->subject;
+        // $Message = $request->message;
+
+        $IP = $request->ip();
+        $Status = 0;
+
+        $contact = new ContactModel();
+        $contact->fullname = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->ip = $IP;
+        $contact->status = $Status;
+        $contact->save();
+        return back()->withSuccess("Thanks for Contacting Us. We'll respond you ASAP!");
     }
 }
