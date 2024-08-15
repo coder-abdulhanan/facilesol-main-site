@@ -1,6 +1,51 @@
 @extends('backend.layouts.main')
 @section('title', 'Home')
 {{-- @section('home', 'active') --}}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Project', 'Project Category'],
+          ['Web App Development',     11],
+          ['Android App Development',      2],
+          ['iOS App Development',  2],
+          ['AI / ML', 2],
+          ['Other',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work',     11],
+            ['Eat',      2],
+            ['Commute',  2],
+            ['Watch TV', 2],
+            ['Sleep',    7]
+          ]);
+
+          var options = {
+            title: 'My Daily Activities'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+          chart.draw(data, options);
+        }
+      </script>
 @section('main-container')
             <div class="container-fluid">
                 <br>
@@ -157,6 +202,7 @@
                     </div>
                 </div>
                 <div class="row">
+
                     <div class="col-xl-6 col-lg-6">
                         <div class="card shadow mb-4">
                             <div
@@ -164,23 +210,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Company Projects</h6>
                             </div>
                             <div class="card-body">
-                                <div class="chart-pie pt-4 pb-2">
-                                    <canvas id="pieChartTotalProject"></canvas>
-                                </div>
-                                <div class="mt-4 text-center small">
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> Development
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-info"></i> Digital Marketing
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-success"></i> eCommerce
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-light"></i> Graphic Design
-                                    </span>
-                                </div>
+                                <div id="donutchart" style="height: 400px;"></div>
                             </div>
                         </div>
                     </div>
@@ -191,20 +221,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Other Stats</h6>
                             </div>
                             <div class="card-body">
-                                <div class="chart-pie pt-4 pb-2">
-                                    <canvas id="pieChartOtherProject"></canvas>
-                                </div>
-                                <div class="mt-4 text-center small">
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> Team Members
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-info"></i> Contacts
-                                    </span>
-                                    <span class="mr-2">
-                                        <i class="fas fa-circle text-light"></i> Newsletter Subscriptions
-                                    </span>
-                                </div>
+                                <div id="piechart" style="height: 400px;"></div>
                             </div>
                         </div>
                     </div>

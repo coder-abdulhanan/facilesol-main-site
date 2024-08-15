@@ -19,6 +19,8 @@ use App\Http\Controllers\backend\AdminProjectsController;
 use App\Http\Controllers\backend\TeamMemberController;
 use App\Http\Controllers\backend\AdminBlogController;
 use App\Http\Controllers\backend\AdminFaqsController;
+use App\Http\Controllers\backend\AdminServicesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,21 +59,21 @@ Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home')-
 Route::group(['as' => 'admin.', 'prefix' => '/admin/'], function(){
     // Login
     Route::get('login', [AdminLoginController::class, 'index'])->name('login');
-    Route::post('login', [AdminLoginController::class, 'onLogin'])->name('submit');
-    Route::get('logout', [AdminLoginController::class, 'logoutAdmin'])->name('logout');
+    Route::post('login', [AdminLoginController::class, 'onLogin'])->name('submit')->middleware('admin.check');
+    Route::get('logout', [AdminLoginController::class, 'logoutAdmin'])->name('logout')->middleware('admin.check');
     // Registration
-    Route::get('register', [AdminHomeController::class, 'registerAdmin'])->name('add');
-    Route::post('register', [AdminHomeController::class, 'submitAdminRecord'])->name('register');
+    Route::get('register', [AdminHomeController::class, 'registerAdmin'])->name('add')->middleware('admin.check');
+    Route::post('register', [AdminHomeController::class, 'submitAdminRecord'])->name('register')->middleware('admin.check');
     // Admin Management
-    Route::get('admins-list', [AdminHomeController::class, 'showAdminRecord'])->name('show');
-    Route::get('edit/{id}', [AdminHomeController::class, 'editAdminRecord'])->name('edit');
-    Route::put('update/{id}', [AdminHomeController::class, 'updateAdminRecord'])->name('update');
-    Route::delete('admin-delete/{id}', [AdminHomeController::class, 'deleteAdminRecord'])->name('delete');
+    Route::get('admins-list', [AdminHomeController::class, 'showAdminRecord'])->name('show')->middleware('admin.check');
+    Route::get('edit/{id}', [AdminHomeController::class, 'editAdminRecord'])->name('edit')->middleware('admin.check');
+    Route::put('update/{id}', [AdminHomeController::class, 'updateAdminRecord'])->name('update')->middleware('admin.check');
+    Route::delete('admin-delete/{id}', [AdminHomeController::class, 'deleteAdminRecord'])->name('delete')->middleware('admin.check');
 
 });
 
 // Team Module
-Route::group(['as' => 'team.', 'prefix' => '/admin/'], function(){
+Route::group(['as' => 'team.', 'prefix' => '/admin/', 'middleware' => 'admin.check'], function(){
     Route::get('team', [TeamMemberController::class, 'index'])->name('show');
     Route::get('team-member-details/{id}', [TeamMemberController::class, 'showTeamMember'])->name('details');
     Route::get('team-add', [TeamMemberController::class, 'registerTeam'])->name('add');
@@ -82,8 +84,8 @@ Route::group(['as' => 'team.', 'prefix' => '/admin/'], function(){
 });
 
 // FAQs Module
-Route::group(['as' => 'faq.', 'prefix' => '/admin/'], function(){
-    Route::get('faqs', [AdminFaqsController::class, 'index'])->name('show')->middleware('mykey');
+Route::group(['as' => 'faq.', 'prefix' => '/admin/', 'middleware' => 'admin.check'], function(){
+    Route::get('faqs', [AdminFaqsController::class, 'index'])->name('show');
     Route::get('faq-add', [AdminFaqsController::class, 'addFAQ'])->name('add');
     Route::post('faq-add', [AdminFaqsController::class, 'submitFaqRecord'])->name('submit');
     Route::get('faq-edit/{id}', [AdminFaqsController::class, 'editFAQ'])->name('edit');
@@ -91,8 +93,19 @@ Route::group(['as' => 'faq.', 'prefix' => '/admin/'], function(){
     Route::delete('faq-delete/{id}', [AdminFaqsController::class, 'deleteFAQ'])->name('delete');
 });
 
+
+// Services Module
+Route::group(['as' => 'service.', 'prefix' => '/admin/', 'middleware' => 'admin.check'], function(){
+    Route::get('services', [AdminServicesController::class, 'index'])->name('show');
+    Route::get('service-add', [AdminServicesController::class, 'addService'])->name('add');
+    Route::post('service-add', [AdminServicesController::class, 'submitRecord'])->name('sumbit');
+    Route::get('service-edit/{id}', [AdminServicesController::class, 'editRecord'])->name('edit');
+    Route::put('service-edit/{id}', [AdminServicesController::class, 'updateRecord'])->name('update');
+    Route::delete('service-delete/{id}', [AdminServicesController::class, 'deleteRecord'])->name('delete');
+});
+
 // Project Module
-Route::group(['as' => 'project.', 'prefix' => '/admin/'], function(){
+Route::group(['as' => 'project.', 'prefix' => '/admin/', 'middleware' => 'admin.check'], function(){
     Route::get('projects', [AdminProjectsController::class, 'index'])->name('show');
     Route::get('project-add', [AdminProjectsController::class, 'addProject'])->name('add');
     Route::post('project-add', [AdminProjectsController::class, 'submitProjectRecord']);
@@ -110,8 +123,6 @@ Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
     Route::put('blog-edit/{id}', [AdminBlogController::class, 'updateRecord'])->name('update');
     Route::delete('blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('delete');
 });
-
-
 
 // Route::group([], function(){
     //Routes Grouping with Closure Function

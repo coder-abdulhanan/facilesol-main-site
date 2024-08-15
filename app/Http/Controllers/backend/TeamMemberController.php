@@ -10,27 +10,23 @@ class TeamMemberController extends Controller
 {
     public function index()
     {
-        if(session()->has('email')){
-            return view('backend.team', ['team'=>Team::get()]);
-        } else {
-            return redirect()->route('admin.login');
-        }
+            $FullName = session('first_name') . " " . session('last_name');
+            $Team = Team::get();
+            return view('backend.team', ['team'=> $Team, 'FullName' => $FullName]);
+
     }
 
     public function registerTeam()
     {
-        if(session()->has('email')){
+        $FullName = session('first_name') . " " . session('last_name');
+        return view('backend.team-add', ['FullName' => $FullName]);
 
-            return view('backend.team-add');
-        } else {
-            return redirect()->route('admin.login');
-        }
     }
 
     public function submitTeamRecord(Request $request)
     {
         // dd($request->all());
-        if(session()->has('email')){
+
             $request->validate(
                 [
                     'fullname' => 'required|min:3',
@@ -63,26 +59,20 @@ class TeamMemberController extends Controller
             $team->status = $ADMIN_STATUS;
             $team->save();
             return back()->withSuccess('Member Record Added Successfully');
-        } else {
-            return redirect()->route('admin.login');
-        }
+
     }
 
     public function editTeam($id)
     {
         // dd($id);
-        if(session()->has('email')){
-
+            $FullName = session('first_name') . " " . session('last_name');
             $team = Team::where('id', $id)->first();
-            return view('backend.team-edit', ['team' => $team]);
-        } else {
-            return redirect()->route('admin.login');
-        }
+            return view('backend.team-edit', ['team' => $team, 'FullName' => $FullName]);
+
     }
 
     public function updateTeam(Request $request, $id)
     {
-        if(session()->has('email')){
             $request->validate(
                 [
                     'fullname' => 'required|min:3',
@@ -116,29 +106,20 @@ class TeamMemberController extends Controller
             $team->status = $ADMIN_STATUS;
             $team->save();
             return back()->withSuccess('Member Record Updated Successfully');
-        } else {
-            return redirect()->route('admin.login');
-        }
     }
 
     public function deleteTeam($id)
     {
-        if(session()->has('email')){
             $team = Team::where('id', $id)->first();
             $team->delete();
             return back()->withSuccess('Member Record Deleted Successfully');
-        } else {
-            return redirect()->route('admin.login');
-        }
+
     }
 
     public function showTeamMember($id)
     {
-        if(session()->has('email')){
+            $FullName = session('first_name') . " " . session('last_name');
             $team = Team::where('id', $id)->first();
-            return view('backend.team-member-details', ['team' => $team]);
-        } else {
-            return redirect()->route('admin.login');
-        }
+            return view('backend.team-member-details', ['team' => $team, 'FullName' => $FullName]);
     }
 }

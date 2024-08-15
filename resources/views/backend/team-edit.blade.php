@@ -110,7 +110,7 @@
                             </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid">
-                                    <input class="btn btn-primary btn-block" type="submit" value="Add Member" name="submit">
+                                    <input class="btn btn-primary btn-block" type="submit" value="Update Member" name="submit">
                                 </div>
                         </form>
                     </div>

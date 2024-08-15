@@ -12,7 +12,7 @@
                 <br>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <a href="{{ route('blogs.show') }}"><button class="btn btn-primary">Blog List</button></a></a>
+                        <a href="{{ route('blog.show') }}"><button class="btn btn-primary">Blog List</button></a></a>
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('blog.sumbit') }}" enctype="multipart/form-data">

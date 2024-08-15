@@ -22,8 +22,6 @@ class AdminLoginController extends Controller
             session()->put('first_name', $admin->first_name);
             session()->put('last_name', $admin->last_name);
             session()->put('email', $admin->email);
-
-            // return redirect('/admin')->with('succes', 'Login Success');
             return redirect()->route('admin.home')->with('success', 'Login Success');;
 
         } else {
@@ -31,8 +29,6 @@ class AdminLoginController extends Controller
             return redirect()->route('admin.login')->with('error', 'Invalid Credentials.');;
             // return redirect('admin/login')->with('error', 'Invalid Credentials.');
         }
-
-
     }
 
     public function logoutAdmin(){
@@ -40,7 +36,6 @@ class AdminLoginController extends Controller
         session()->forget('first_name');
         session()->forget('last_name');
         session()->forget('email');
-        // return redirect('/admin/login')->with('success', 'Logout Success');
         return redirect()->route('admin.login')->with('success', 'Logout Success');;
     }
 

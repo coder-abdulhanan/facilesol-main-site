@@ -62,7 +62,7 @@
             <li class="nav-item {{ Request::is('admin/blogs', 'admin/blog-add') ? 'active' : ''}}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
                     aria-expanded="true" aria-controls="collapseBlogs">
-                    <i class="fas fa-fw fa-file"></i>
+                    <i class="fas fa-fw fa-pencil-alt"></i>
                     <span>Blog Management</span>
                 </a>
                 <div id="collapseBlogs" class="collapse" aria-labelledby="blogs" data-parent="#accordionSidebar">
@@ -72,10 +72,23 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item {{ Request::is('admin/services', 'admin/services-add') ? 'active':''}}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseServices"
+                    aria-expanded="true" aria-controls="collapseServices">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Services Management</span>
+                </a>
+                <div id="collapseServices" class="collapse" aria-labelledby="services" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/admin/services')}}">Services</a>
+                        <a class="collapse-item" href="{{url('/admin/service-add')}}">Add Service</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item {{ Request::is('admin/projects', 'admin/project-add') ? 'active':''}}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjects"
                     aria-expanded="true" aria-controls="collapseProjects">
-                    <i class="fas fa-fw fa-file"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Projects Management</span>
                 </a>
                 <div id="collapseProjects" class="collapse" aria-labelledby="projects" data-parent="#accordionSidebar">

@@ -12,7 +12,8 @@ class AdminBlogController extends Controller
     public function index()
     {
         if(session()->has('email')){
-            return view('backend.blogs', ['blog'=>Blogs::get()]);
+            $FullName = session('first_name') . " " . session('last_name');
+            return view('backend.blogs', ['blog' => Blogs::get(), 'FullName' => $FullName]);
         } else {
             return redirect()->route('admin.login');
         }
@@ -21,7 +22,8 @@ class AdminBlogController extends Controller
     public function addBlog()
     {
         if(session()->has('email')){
-            return view('backend.blog-add');
+            $FullName = session('first_name') . " " . session('last_name');
+            return view('backend.blog-add', ['FullName' => $FullName]);
         } else {
             return redirect()->route('admin.login');
         }
@@ -69,7 +71,8 @@ class AdminBlogController extends Controller
         // dd($id);
         if(session()->has('email')){
             $blog = Blogs::where('id', $id)->first();
-            return view('backend.blog-edit', ['blog' => $blog]);
+            $FullName = session('first_name') . " " . session('last_name');
+            return view('backend.blog-edit', ['blog' => $blog, 'FullName' => $FullName]);
         } else {
             return redirect()->route('admin.login');
         }
