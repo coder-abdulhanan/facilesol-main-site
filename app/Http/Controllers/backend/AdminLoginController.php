@@ -16,6 +16,8 @@ class AdminLoginController extends Controller
 
     public function onLogin(Request $request)
     {
+        // dd($request->toArray());
+
         $admin = Admins::where('email', $request->input('email'))->where('password', $request->input('password'))->first();
         if($admin){
             session()->put('id', $admin->id);
@@ -25,7 +27,6 @@ class AdminLoginController extends Controller
             return redirect()->route('admin.home')->with('success', 'Login Success');;
 
         } else {
-            //dd($request);
             return redirect()->route('admin.login')->with('error', 'Invalid Credentials.');;
             // return redirect('admin/login')->with('error', 'Invalid Credentials.');
         }

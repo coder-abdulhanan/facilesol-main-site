@@ -18,6 +18,7 @@ use App\Http\Controllers\backend\AdminHomeController;
 use App\Http\Controllers\backend\AdminProjectsController;
 use App\Http\Controllers\backend\TeamMemberController;
 use App\Http\Controllers\backend\AdminBlogController;
+use App\Http\Controllers\backend\AdminContactController;
 use App\Http\Controllers\backend\AdminFaqsController;
 use App\Http\Controllers\backend\AdminServicesController;
 
@@ -59,7 +60,7 @@ Route::get('/admin', [AdminHomeController::class, 'index'])->name('admin.home')-
 Route::group(['as' => 'admin.', 'prefix' => '/admin/'], function(){
     // Login
     Route::get('login', [AdminLoginController::class, 'index'])->name('login');
-    Route::post('login', [AdminLoginController::class, 'onLogin'])->name('submit')->middleware('admin.check');
+    Route::post('login', [AdminLoginController::class, 'onLogin'])->name('submit');
     Route::get('logout', [AdminLoginController::class, 'logoutAdmin'])->name('logout')->middleware('admin.check');
     // Registration
     Route::get('register', [AdminHomeController::class, 'registerAdmin'])->name('add')->middleware('admin.check');
@@ -122,6 +123,13 @@ Route::group(['as' => 'blog.', 'prefix' => '/admin/'], function(){
     Route::get('blog-edit/{id}', [AdminBlogController::class, 'editRecord'])->name('edit');
     Route::put('blog-edit/{id}', [AdminBlogController::class, 'updateRecord'])->name('update');
     Route::delete('blog-delete/{id}', [AdminBlogController::class, 'deleteRecord'])->name('delete');
+});
+
+
+// Contact Module
+Route::group(['as' => 'contact.', 'prefix' => '/admin/'], function(){
+    Route::get('contact-active', [AdminContactController::class, 'index'])->name('show');
+    // Route::get('contact-inactive', [AdminContactController::class, 'addBlog'])->name('add');
 });
 
 // Route::group([], function(){
