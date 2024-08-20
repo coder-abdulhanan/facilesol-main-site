@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\backend\Projects;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProjectsController extends Controller
 {
     public function index()
     {
-        return view('frontend.projects');
+        $categories = Projects::select('category')->distinct()->get();
+        $projects = Projects::all();
+        return view('frontend.projects',  compact('categories', 'projects'));
     }
 }

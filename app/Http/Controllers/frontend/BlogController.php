@@ -9,6 +9,7 @@ class BlogController extends Controller
 {
     public function index()
     {
+
         return view('frontend.blog');
     }
 }

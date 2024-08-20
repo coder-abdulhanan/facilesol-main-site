@@ -27,115 +27,120 @@
 			<div class="col-xl-12 col-lg-12 col-sm-12 col-12">
 				<ul class="porject-link text-center">
 					<li class="filter theme-color" data-filter="all">Show All</li>
-					<li class="filter theme-color" data-filter=".web">Web Development</li>
-					<li class="filter theme-color" data-filter=".branding">Branding</li>
-					<li class="filter theme-color" data-filter=".security">Cyber Security</li>
-					<li class="filter theme-color" data-filter=".it">IT Consultancy</li>
+                @foreach ($categories as $category)
+					<li class="filter theme-color" data-filter=".{{ $category->category}}">{{ $category->category }}</li>
+                @endforeach
 				</ul>
 			</div>
 		</div>
 		<div class="row work-mixi popup-gallery mt-2 gy-4">
-			<div class="col-lg-4 col-md-6 mix web">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-1.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-1.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mix branding">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-2.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-2.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-12 mix security">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-3.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-3.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 mix it">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-4.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-4.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 mix it">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-5.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-5.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mix web">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-6.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-6.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mix branding">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-7.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-7.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-12 mix security">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-8.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-8.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 mix it">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-9.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-9.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 mix web">
-				<div class="project-page-box position-relative z-index-one">
-					<img class="w-100" src="{{url('frontend/images/project/project-pg-10.png')}}" alt="Image Not Found">
-					<a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-10.png"><i class="far fa-plus-circle"></i></a>
-					<div class="project-info position-absolute">
-						<h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
-						<p class="text-white">Web Development</p>
-					</div>
-				</div>
-			</div>
+            @foreach ($projects as $project)
+                <div class="col-lg-4 col-md-6 mix {{ $project->category }}">
+                    <div class="project-page-box position-relative z-index-one">
+                        <img class="w-100" src="/backend/images/projects/{{$project->image}}" alt="Image Not Found">
+                        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="/backend/images/projects/{{$project->image}}"><i class="far fa-plus-circle"></i></a>
+                        <div class="project-info position-absolute">
+                            <h2 class="text-white"><a href="#">{{ $project->title }}</a></h2>
+                            <p class="text-white">{{ $project->category }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 		</div>
 	</div>
 </div>
 @endsection
+
+
+{{--
+
+<div class="col-lg-4 col-md-6 mix branding">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-2.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-2.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-12 mix security">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-3.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-3.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-md-12 mix it">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-4.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-4.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-md-12 mix it">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-5.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-5.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6 mix web">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-6.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-6.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6 mix branding">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-7.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-7.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-12 mix security">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-8.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-8.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-md-12 mix it">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-9.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-9.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6 col-md-12 mix web">
+    <div class="project-page-box position-relative z-index-one">
+        <img class="w-100" src="{{url('frontend/images/project/project-pg-10.png')}}" alt="Image Not Found">
+        <a class="position-absolute project-popup d-flex justify-content-center align-items-center" href="assets/images/project/project-pg-10.png"><i class="far fa-plus-circle"></i></a>
+        <div class="project-info position-absolute">
+            <h2 class="text-white"><a href="projects-details.html">CMS best software solutions</a></h2>
+            <p class="text-white">Web Development</p>
+        </div>
+    </div>
+</div> --}}
