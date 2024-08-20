@@ -107,3 +107,9 @@ php artisan config:cache
 
 Only works on checked/selected routes
 
+
+## Lazzy Loading vs Eager Loading
+
+
+composer require barryvdh/laravel-debugbar --dev
+

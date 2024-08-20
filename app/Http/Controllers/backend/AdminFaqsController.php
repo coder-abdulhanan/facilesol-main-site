@@ -11,6 +11,7 @@ class AdminFaqsController extends Controller
     public function index()
     {
         $FullName = session('first_name') . " " . session('last_name');
+        // $faqs = FAQs::get();
         $faqs = FAQs::all();
         return view('backend.faq', ['faqs' => $faqs, 'FullName' => $FullName]);
     }
