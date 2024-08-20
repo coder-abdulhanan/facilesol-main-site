@@ -27,10 +27,11 @@
 			</div>
 		</div>
 		<div class="row mt-60">
+
 			<div class="col-lg-12">
 				<div class="accordion faq-wrap faq-wrap-page" id="accordionExample">
 					@foreach ($faqs as $faq)
-                    <div class="accordion-item">
+                    <div class="accordion-item mb-4">
 						<h2 class="accordion-header" id="heading{{$faq->id}}">
 							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$faq->id}}" aria-expanded="true" aria-controls="collapse{{$faq->id}}">
 								Q. {{$faq->question}}
@@ -45,7 +46,12 @@
                     @endforeach
 				</div>
 			</div>
+			<div class="col-lg-12 mt-4">
+                <div>
+                    {{$faqs->links('pagination::bootstrap-5')}}
+                </div>
 
+			</div>
 		</div>
 	</div>
 </div>

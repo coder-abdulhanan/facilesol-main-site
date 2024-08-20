@@ -10,6 +10,6 @@ class FaqsController extends Controller
 {
     public function index()
     {
-        return view('frontend.faqs', ['faqs'=>FAQsModel::get()]);
+        return view('frontend.faqs', ['faqs'=>FAQsModel::paginate(5)]);
     }
 }
