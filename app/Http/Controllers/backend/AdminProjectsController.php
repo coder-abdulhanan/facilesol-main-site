@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Projects;
 use Illuminate\Http\Request;
-use App\Models\backend\Projects;
 
 class AdminProjectsController extends Controller
 {

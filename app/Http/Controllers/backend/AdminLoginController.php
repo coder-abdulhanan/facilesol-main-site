@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\backend\Admins;
+use App\Models\Admins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 

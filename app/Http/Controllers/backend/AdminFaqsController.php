@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\backend\FAQs;
+use App\Models\FAQs;
 use Illuminate\Http\Request;
 
 class AdminFaqsController extends Controller

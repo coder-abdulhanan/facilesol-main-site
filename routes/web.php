@@ -11,6 +11,7 @@ use App\Http\Controllers\frontend\TeamController;
 use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\ServicesController;
 use App\Http\Controllers\frontend\POSDetailsController;
+use App\Http\Controllers\frontend\BlogController;
 
 //Backend Controllers
 use App\Http\Controllers\backend\AdminLoginController;
@@ -22,21 +23,12 @@ use App\Http\Controllers\backend\AdminContactController;
 use App\Http\Controllers\backend\AdminFaqsController;
 use App\Http\Controllers\backend\AdminServicesController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 // Frontend
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/team', [TeamController::class, 'index']);
+Route::get('/blog', [BlogController::class, 'index']);
 Route::get('/faqs', [FaqsController::class, 'index']);
 Route::get('/projects', [ProjectsController::class, 'index']);
 Route::get('/services', [ServicesController::class, 'index']);

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admins;
+use App\Models\Blogs;
+use App\Models\Contact;
+use App\Models\FAQs;
+use App\Models\Projects;
+use App\Models\Team;
 use Illuminate\Http\Request;
-use App\Models\backend\Admins;
-use App\Models\backend\Blogs;
-use App\Models\backend\FAQs;
-use App\Models\backend\Projects;
-use App\Models\backend\Team;
-use App\Models\frontend\ContactModel;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
@@ -29,7 +29,7 @@ class AdminHomeController extends Controller
             $TotalTeam = Team::count();
             $TotalFAQs = FAQs::count();
             $TotalPosts = Blogs::count();
-            $TotalContacts = ContactModel::count();
+            $TotalContacts = Contact::count();
             $TotalProjects = Projects::count();
             $AppProjects = Projects::where('category', 'Mobile App Development')->count();
             $WebProjects = Projects::where('category', 'Web App Development')->count();

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\backend;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Projects extends Model
+class Blogs extends Model
 {
     use HasFactory;
-    protected $table = "projects";
+    protected $table = "blogs";
     protected $primary_key = "id";
 }

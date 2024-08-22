@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\frontend\ContactModel;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -36,7 +36,7 @@ class ContactController extends Controller
         $IP = $request->ip();
         $Status = 0;
 
-        $contact = new ContactModel();
+        $contact = new Contact();
         $contact->fullname = $request->name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\backend\Blogs;
+use App\Models\Blogs;
 use Illuminate\Http\Request;
 
 class AdminBlogController extends Controller
