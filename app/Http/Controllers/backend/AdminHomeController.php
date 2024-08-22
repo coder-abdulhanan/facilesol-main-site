@@ -5,10 +5,13 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\backend\Admins;
+use App\Models\backend\Blogs;
 use App\Models\backend\FAQs;
 use App\Models\backend\Projects;
 use App\Models\backend\Team;
+use App\Models\frontend\ContactModel;
 use Illuminate\Support\Facades\Hash;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class AdminHomeController extends Controller
 {
@@ -22,11 +25,17 @@ class AdminHomeController extends Controller
         // }
 
             $FullName = session('first_name') . " " . session('last_name');
-            $TotalAdmins = Admins::count(); //2
-            $TotalTeam = Team::count();  // 1
-            $TotalFAQs = FAQs::count(); // 6
-            $TotalProjects = Projects::count(); // 1
-            return view('backend.index', compact('FullName','TotalAdmins', 'TotalTeam', 'TotalFAQs', 'TotalProjects'));
+            $TotalAdmins = Admins::count();
+            $TotalTeam = Team::count();
+            $TotalFAQs = FAQs::count();
+            $TotalPosts = Blogs::count();
+            $TotalContacts = ContactModel::count();
+            $TotalProjects = Projects::count();
+            $AppProjects = Projects::where('category', 'Mobile App Development')->count();
+            $WebProjects = Projects::where('category', 'Web App Development')->count();
+            $UIUXProjects = Projects::where('category', 'UI/UX')->count();
+            $AIMLProjects = Projects::where('category', 'AI/ML')->count();
+            return view('backend.index', compact('FullName','TotalAdmins', 'TotalTeam', 'TotalFAQs', 'TotalProjects', 'AppProjects', 'TotalPosts', 'TotalContacts', 'WebProjects', 'UIUXProjects', 'AIMLProjects'));
 
     }
 
