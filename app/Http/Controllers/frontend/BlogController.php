@@ -10,9 +10,16 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blog = Blogs::get();
-        return view('frontend.blog');
+        $Blogs = Blogs::get();
+        return view('frontend.blog', ['blogs' => $Blogs]);
     }
+
+    public function getBlogDetails($id){
+        $Blogs = Blogs::where('id', $id)->first();
+        return view('frontend.blog-details', ['blog' => $Blogs]);
+
+    }
+
 
 
 }

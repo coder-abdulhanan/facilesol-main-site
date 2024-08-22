@@ -19,22 +19,30 @@
 <div class="blog-sidebar-area pt-120 pb-96">
     <div class="container">
         <div class="row">
+			@foreach ($blogs as $blog)
             <div class="col-lg-6">
                 <div class="blog-two-wrap">
                     <div class="blog-img overflow-hidden">
-                        <img class="w-100" src="{{url('frontend/images/blog/blog-two-3.png')}}" alt="Image Not Found">
+                        <img class="w-100" src="/backend/images/blog_posts/{{$blog->blog_image}}" alt="Image Not Found">
                     </div>
                     <div class="blog-info">
                         <div class="meta-wrap d-flex flex-wrap align-items-center">
-                            <p><i class="far fa-user-circle"></i> By William Sony</p>
-                            <p><i class="fal fa-calendar-minus"></i> Jan 20, 2023</p>
+                            <p><i class="far fa-user-circle"></i> {{ $blog->author }}</p>
+                            <p><i class="fal fa-calendar-minus"></i> {{ $blog->updated_on }}</p>
                         </div>
-                        <h2><a href="blog-details.html">Relational vs non-relational databases, querying data and what product managers really need to know</a></h2>
-                        <p>Welcome to part five of a series of articles covering the technical knowledge that every Product Manager ought to know. Today I’m going to be talking about...</p>
-                        <a class="d-inline-flex align-items-center blog-btn" href="blog-details.html">Read More <i class="fas fa-long-arrow-right"></i></a>
+                        <h2><a href="/blog-details/{{ $blog->id }}">{{ $blog->title }}</a></h2>
+                        <p>
+                            @if(strlen($blog->details) > 100)
+                                {{ substr($blog->details, 0, 100) . '...' }}
+                            @else
+                                {{ $blog->details }}
+                            @endif
+                        </p>
+                        <a class="d-inline-flex align-items-center blog-btn" href="/blog-details/{{ $blog->id }}">Read More <i class="fas fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div>

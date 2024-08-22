@@ -29,6 +29,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/team', [TeamController::class, 'index']);
 Route::get('/blog', [BlogController::class, 'index']);
+Route::get('blog-details/{id}', [BlogController::class, 'getBlogDetails']);
 Route::get('/faqs', [FaqsController::class, 'index']);
 Route::get('/projects', [ProjectsController::class, 'index']);
 Route::get('/services', [ServicesController::class, 'index']);
