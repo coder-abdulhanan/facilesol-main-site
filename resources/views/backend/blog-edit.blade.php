@@ -68,7 +68,7 @@
                                 <img src="/backend/images/blog_authors/{{$blog->author_image}}" alt="Image Not Found" style="height:100px; width:100px">
                             </div>
                             <div class="form-floating mb-3">
-                                <label for="blog_image">Blog Image (Only Upload New Image if You Want.Otherwise, Do not Upload.)</label>
+                                <label for="blog_image">Blog Image (Only Upload New Image if You Want. Otherwise, Do not Upload.)</label>
                                 <input class="form-control" id="blog_image" type="file" name="blog_image" value="{{old('blog_image', $blog->blog_image)}}" style="padding-bottom:38px">
                                 @if ($errors->has('blog_image'))
                                     <span class="text-danger">

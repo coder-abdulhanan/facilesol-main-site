@@ -38,7 +38,7 @@ class AdminServicesController extends Controller
             'image' => 'required|mimes:jpeg,jpg,png,svg|max:10000'
         ]);
         $SERVICE_STATUS = 1;
-        $ImageName = 'fs_team_' . time() . '.' . $request->image->extension();
+        $ImageName = 'fs_service_' . time() . '.' . $request->image->extension();
         $request->image->move(public_path('backend/images/services'), $ImageName);
         // dd($ImageName);
         $service = new Services();
@@ -49,5 +49,41 @@ class AdminServicesController extends Controller
         $service->save();
         return back()->withSuccess('Project Record Added Successfully');
     }
+    public function editRecord($id)
+    {
+        // dd($id);
+        $FullName = session('first_name') . " " . session('last_name');
+        $service = Services::where('id', $id)->first();
+        return view('backend.service-edit', ['service' => $service, 'FullName' => $FullName]);
+    }
 
+    public function updateRecord(Request $request, $id)
+    {
+        $request->validate(
+        [
+            'title' => 'required|min:3',
+            'details' => 'required|min:10',
+            'thumbnail' => 'nullable|mimes:jpeg,jpg,png,svg|max:10000'
+        ]
+        );
+
+        $service = Services::where('id', $id)->first();
+        if(isset($request->thumbnail))
+        {
+            $ImageName = 'fs_service_' . time() . '.' . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('backend/images/services'), $ImageName);
+            $service->thumbnail = $ImageName;
+        }
+        $service->title = $request->title;
+        $service->details = $request->details;
+        $service->save();
+        return back()->withSuccess('Service Record Updated Successfully');
+    }
+
+    public function deleteRecord($id)
+    {
+        $service = Services::where('id', $id)->first();
+        $service->delete();
+        return back()->withSuccess('Service Record Deleted Successfully');
+    }
 }

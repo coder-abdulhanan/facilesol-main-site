@@ -12,15 +12,15 @@
                 <br>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <a href="{{url('/admin/projects')}}"><button class="btn btn-primary">Projects List</button></a></a>
+                        <a href="{{url('/admin/services')}}"><button class="btn btn-primary">Services List</button></a></a>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="/admin/project-edit/{{$project->id}}" enctype="multipart/form-data">
+                        <form method="post" action="/admin/service-edit/{{$service->id}}" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-floating mb-3">
                                 <label for="title">Title</label>
-                                <input class="form-control" id="title" type="text" placeholder="Enter Project Title" name="title" value="{{old('title', $project->title)}}">
+                                <input class="form-control" id="title" type="text" placeholder="Enter Service Title" name="title" value="{{old('title', $service->title)}}">
                                 @if ($errors->has('title'))
                                     <span class="text-danger">
                                         {{$errors->first('title')}}
@@ -29,61 +29,29 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <label for="details">Details</label>
-                                <input class="form-control" id="details" type="text" placeholder="Enter Project Details" name="details" value="{{old('details', $project->details)}}">
+                                <input class="form-control" id="details" type="text" placeholder="Enter Service Details" name="details" value="{{old('details', $service->details)}}">
                                 @if ($errors->has('details'))
                                     <span class="text-danger">
                                         {{$errors->first('details')}}
                                     </span>
                                 @endif
                             </div>
+
                             <div class="form-floating mb-3">
-                                <label for="category">Category</label>
-                                <input class="form-control" id="category" type="text" placeholder="Enter Project Category" name="category" value="{{old('category', $project->category)}}">
-                                @if ($errors->has('category'))
-                                    <span class="text-danger">
-                                        {{$errors->first('category')}}
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="client">Client</label>
-                                <input class="form-control" id="client" type="text" placeholder="Enter Project Client" name="client" value="{{old('client', $project->client)}}">
-                                @if ($errors->has('client'))
-                                    <span class="text-danger">
-                                        {{$errors->first('client')}}
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="link">Link</label>
-                                <input class="form-control" id="link" type="text" placeholder="Enter Project Client" name="link" value="{{old('link', $project->link)}}"/>
-                                @if ($errors->has('link'))
-                                    <span class="text-danger">
-                                        {{$errors->first('link')}}
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="technology">Technology</label>
-                                <input class="form-control" id="fb" type="text" placeholder="Enter Project Technology" name="technology" value="{{old('technology', $project->technology)}}">
-                                @if ($errors->has('technology'))
-                                    <span class="text-danger">
-                                        {{$errors->first('technology')}}
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-floating mb-3">
-                                <label for="image">Image</label>
-                                <input class="form-control" id="image" type="file" name="image" value="{{old('image', $project->image)}}" style="padding-bottom:38px">
+                                <label for="image">Thumbnail (Only Upload New Image if You Want. Otherwise, Do not Upload.)</label>
+                                <input class="form-control" id="image" type="file" name="image" value="{{old('image', $service->thumbnail)}}" style="padding-bottom:38px">
                                 @if ($errors->has('image'))
                                     <span class="text-danger">
                                         {{$errors->first('image')}}
                                     </span>
                                 @endif
                             </div>
+                            <div class="mb-3">
+                                <img src="/backend/images/services/{{$service->thumbnail}}" alt="Image Not Found" style="height:100px; width:100px; border:2px solid #3e3aa2">
+                            </div>
                             <div class="mt-4 mb-0">
                                 <div class="d-grid">
-                                    <input class="btn btn-primary btn-block" type="submit" value="Update Project" name="submit">
+                                    <input class="btn btn-primary btn-block" type="submit" value="Update Service" name="submit">
                                 </div>
                         </form>
                     </div>
