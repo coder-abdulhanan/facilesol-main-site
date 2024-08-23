@@ -47,18 +47,18 @@
                             <div class="form-floating mb-3">
                                 <label for="category">Category</label>
                                 <select class="form-control" id="category" name="category" value="{{old('category')}}">
-                                  <option>--Select Category--</option>
-                                  <option>AI/ML</option>
-                                  <option>Mobile App Development</option>
-                                  <option>UI/UX</option>
-                                  <option>Web App Development</option>
+                                    <option>--Select Category--</option>
+                                    <option>AI/ML</option>
+                                    <option>Mobile App Development</option>
+                                    <option>UI/UX</option>
+                                    <option>Web App Development</option>
                                 </select>
                                 @if ($errors->has('category'))
                                     <span class="text-danger">
                                         {{$errors->first('category')}}
                                     </span>
                                 @endif
-                              </div>
+                            </div>
                             {{-- <div class="form-floating mb-3">
                                 <label for="category">Category</label>
                                 <input class="form-control" id="category" type="text" placeholder="Enter Project Category" name="category" value="{{old('category')}}">

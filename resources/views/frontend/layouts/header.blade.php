@@ -10,11 +10,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>@yield('title') | {{ config('app.name') }}</title>
+    <title>@yield('title') | {{ config('app.name') }} - IT Services Provider & Consulting Organization</title>
+    <meta name="description" content="Facile Solutions UK provides enterprise-level software solutions and services using cutting-edge technology for digital transformation.">
+    <meta name="keywords" content="Facile Solutions, FacileSol, Facile EPOS, Facile Solutions UK, Facile Solutions IT Services, FacileSol Consulting, acile Solutions Enterprise Software UK, Software Development UK, Facile EPOS Systems, Facile Solutions Digital Transformation, FacileSol Technology Consulting, Facile Solutions Software Development, Facile EPOS Software, FacileSol IT Solutions, Facile Solutions UK Consulting">
+    <meta name="author" content="Facile Solutions UK">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.facilesol.co.uk/">
+    <meta property="og:title" content="Facile Solutions UK | IT Services Provider & Consulting Organization">
+    <meta property="og:description" content="Facile Solutions UK offers enterprise-level software solutions and IT consulting services using the latest technology.">
+    <meta property="og:image" content="{{ url('frontend/images/open-graph.jpg') }}">
+    <link rel="canonical" href="https://www.facilesol.co.uk/">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.facilesol.co.uk/">
+    <meta property="twitter:title" content="Facile Solutions UK | IT Services Provider & Consulting Organization">
+    <meta property="twitter:description" content="Facile Solutions UK offers enterprise-level software solutions and IT consulting services using the latest technology.">
+    <meta property="twitter:image" content="{{ url('frontend/images/open-graph.jpg') }}">
+    <link rel="canonical" href="https://www.facilesol.co.uk/">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url('frontend/images/favicon/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url('frontend/images/favicon/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url('frontend/images/favicon/favicon-16x16.png')}}">
     <link rel="manifest" href="{{ url('frontend/images/favicon/site.webmanifest')}}">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#073792">
+    <meta name="msapplication-TileColor" content="#073792">
+    <meta name="theme-color" content="#073792">
     <link rel="stylesheet" href="{{ url('frontend/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ url('frontend/css/swiper-bundle.min.css') }}">

@@ -17,8 +17,7 @@
                                     <th>Title</th>
                                     <th>Details</th>
                                     <th>Category</th>
-                                    <th>Original Price</th>
-                                    <th>Discounted Price</th>
+                                    <th>Thumbnail</th>
                                     <th>Status</th>
                                     <th width="160px">Actions</th>
                                 </tr>
@@ -36,9 +35,9 @@
                                         @endif
                                     </td>
                                     <td>{{ $service->category_name }}</td>
-                                    <td>{{ $service->original_price }}</td>
-                                    <td>{{ $service->discounted_price }}</td>
-
+                                    <td>
+                                        <img src="/backend/images/service/{{$service->thumbnail}}" class="rounded-circle border border-primary" width="50px" height="50px" alt="Image Not Found">
+                                    </td>
                                     <td>
                                         @if($service->status == 1)
                                             <a href="">
